@@ -1,0 +1,36 @@
+<mat-card-title class="frontPageTitle">Welcome to your new storage!</mat-card-title>
+
+<mat-card class="homeLogin">
+           
+    <mat-card-content class="loginInput">
+        <mat-card-header>
+            <mat-card-title>Enter credentials</mat-card-title>
+        </mat-card-header>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput type="password">
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" [routerLink]="['/home']" routerLinkActive="router-link-active" >Log in</button>
+    </mat-card-content>
+ 
+</mat-card>
+
+<mat-card class="homeRegister">
+    <mat-card-content class="loginInput">
+        <div class="row">
+            <div class="col1">
+                <mat-card-subtitle>No Account?</mat-card-subtitle>
+            </div>
+            <div class="col">
+                <button routerLink="register" mat-raised-button color="accent">Register</button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
