@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class ItemConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(ItemRepository repository) {
+    CommandLineRunner itemCommandLineRunner(ItemRepository repository) {
         return args -> {
             /*Item phone = new Item(
                     1L,

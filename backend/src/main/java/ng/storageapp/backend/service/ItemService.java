@@ -1,18 +1,20 @@
 package ng.storageapp.backend.service;
 
 import lombok.AllArgsConstructor;
+import ng.storageapp.backend.dto.ItemStorageDTO;
 import ng.storageapp.backend.model.Item;
 import ng.storageapp.backend.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 
 @Service
 public class ItemService {
-
 
     @Autowired
     ItemRepository itemRepository;
@@ -25,10 +27,27 @@ public class ItemService {
 
     public Item getOneItem(Long id) throws Exception {
         //no double connection
-        boolean exists = (itemRepository.existsById(id));
-        if (exists){
-            return itemRepository.findById(id).get();
+        //boolean exists = (itemRepository.existsById(id));
+        Optional<Item> result = itemRepository.findById(id);
+        if (result.isPresent()){
+            return result.get();
         }
         throw new Exception();
+    }
+
+    public List<ItemStorageDTO> getAllItemStorage(){
+        return itemRepository.findAll()
+                .stream()
+                .map(this::convertEntToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public ItemStorageDTO convertEntToDTO(Item item){
+        ItemStorageDTO itemStorageDTO = new ItemStorageDTO();
+        itemStorageDTO.setItemID(item.getId());
+        itemStorageDTO.setStorageID(item.getStorage().getId());
+        itemStorageDTO.setName(item.getStorage().getName());
+
+        return itemStorageDTO;
     }
 }

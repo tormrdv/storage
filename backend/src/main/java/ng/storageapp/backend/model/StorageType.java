@@ -18,6 +18,8 @@ public class StorageType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String type;
+
+    @Column(name = "type_name")
     private String typeName;
 
     //storage reference

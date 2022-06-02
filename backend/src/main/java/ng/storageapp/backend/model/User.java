@@ -14,6 +14,8 @@ import java.util.Set;
 
 public class User {
     public static final String TABLE_NAME = "users";
+    public static final String BUSINESS_USER = "business_client_owner_id";
+    public static final String ID = "id";
 
     @Id
     @SequenceGenerator(
@@ -25,10 +27,11 @@ public class User {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    @Column(name = "id")
+    @Column(name = ID)
     private long id;
     private String name;
     private String email;
+    //encrypt password
     private String passwordHash;
     private boolean isAdmin;
 
@@ -37,10 +40,11 @@ public class User {
     @OneToMany(mappedBy = "id")
     private Set<User> user;
     @ManyToOne
-    @JoinColumn(name = "business_client_owner_id")
+    @JoinColumn(name = BUSINESS_USER)
     private User businessClientOwnerId;
 
     @Nullable
+    @Column(name = "storage_limit")
     private int storageLimit;
 
     //role reference
@@ -50,5 +54,14 @@ public class User {
     //storage reference
     @OneToMany(mappedBy = "id")
     private Set<Storage> storages;
+
+
+    public User(
+            String name,
+            String email,
+            String password,
+            boolean admin)
+    {
+    }
 }
 

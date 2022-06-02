@@ -30,11 +30,14 @@ public class Item {
     private String name;
 
     @Nullable
+    @Column(name = "serial_number")
     private int serialNumber;
 
     private Double weight;
     private String colour;
     private int value;
+
+    @Column(name = "file_name")
     private String fileName;
 
     //reference to storage

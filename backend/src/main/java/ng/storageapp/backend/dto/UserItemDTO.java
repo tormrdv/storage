@@ -6,7 +6,9 @@ import lombok.Data;
 
 public class UserItemDTO {
     private long userID;
-    private String userName;
+    private long storageID;
     private long itemID;
+    private String userName;
+    private String storageName;
     private String itemName;
 }
