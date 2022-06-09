@@ -30,3 +30,6 @@ right click `pom.xml` then select ->**Maven** and lastly->**Reload Project**
 Then either:
  1) Spring boot application has an entry point Java class called _SpringbootBackendApplication_ with the _public static void main(String[] args)_ method, which you can run to start the application.
  2) Or you can start the spring boot application via the command line using this command:  `mvn spring-boot:run` .
+
+## ERD 
+![storage-app](https://user-images.githubusercontent.com/71014202/172955402-63cf98a8-cefc-4dc8-b5a8-80dc7494c05d.png)
