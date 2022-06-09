@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Data
@@ -14,7 +15,9 @@ import javax.persistence.*;
 @Entity
 
 public class Item {
-    private final String storageId = "item_storage_id";
+    public static final String ITEM_ID = "id";
+    public static final String SERIAL_NUM = "serial_number";
+    public static final String FILE = "file_name";
 
     @Id
     @SequenceGenerator(
@@ -26,24 +29,28 @@ public class Item {
             strategy = GenerationType.SEQUENCE,
             generator = "item_sequence"
     )
+    @Column(name = ITEM_ID)
     private Long id;
     private String name;
 
     @Nullable
-    @Column(name = "serial_number")
-    private int serialNumber;
+    @Column(name = SERIAL_NUM)
+    //no primitive
+    private Integer serialNumber;
 
     private Double weight;
     private String colour;
-    private int value;
+    private Integer value;
 
-    @Column(name = "file_name")
+    @Nullable
+    @Column(name = FILE)
     private String fileName;
 
-    //reference to storage
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = storageId)
-    private Storage storage;
+    //reference to item in storage
+    @OneToMany(mappedBy = "id")
+    private Set<StorageItem> item;
+
+
 }
 
 

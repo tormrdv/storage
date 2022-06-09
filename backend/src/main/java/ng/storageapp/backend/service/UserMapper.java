@@ -14,12 +14,12 @@ public class UserMapper {
         long id = user.getId();
         String name = user.getName();
         String email = user.getEmail();
-       //boolean isAdmin = user.isAdmin();
+        String role = user.getRole();
 
-        return new UserDTO(id, name, email);
+        return new UserDTO(id, name, email, role);
     }
 
-    public User toUser(UserCreationDTO userDTO){
-        return new User(userDTO.getName(), userDTO.getEmail(), userDTO.getPassword(), userDTO.isAdmin());
+    public User toUser(UserCreationDTO userDTO) {
+        return new User(userDTO.getName(), userDTO.getEmail(), userDTO.getPassword(), userDTO.getRole());
     }
 }

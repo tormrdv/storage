@@ -14,6 +14,10 @@ import java.util.Set;
 @Entity
 
 public class Storage {
+    //private final String ID = "id";
+    public static final String STORAGE_TYPE = "storage_type_id";
+    public static final String STORAGE_NEST = "storage_nest_id";
+    public static final String USER_ID = "user_id";
 
     @Id
     @SequenceGenerator(
@@ -26,29 +30,31 @@ public class Storage {
             generator = "storage_sequence"
     )
     @Column(name = "id")
-    private long id;
+    private Long id;
     private String name;
+    private Integer code;
 
     //StorageType reference
     @ManyToOne
-    @JoinColumn(name = "storage_type_id", nullable = false)
+    @JoinColumn(name = STORAGE_TYPE, nullable = false)
     private StorageType storageType;
 
-    //Item reference
-    @OneToMany(mappedBy = "id")
-    private Set<Item> items;
-
-    //self reference
+    //export primary key to storagenest
     @Nullable
     @OneToMany(mappedBy = "id")
-    private Set<Storage> storage;
-    @ManyToOne
-    @JoinColumn(name = "storage_storage_id")
-    private Storage storage_storage;
+    private Set<StorageNest> storage;
 
-    private int code;
-
+    //Foreign key from storageNest
     @ManyToOne
-    @JoinColumn(name = "users_id", nullable = false)
+    @JoinColumn(name = STORAGE_NEST)
+    private StorageNest storage_nest;
+
+    //reference to item in storage
+    @OneToMany(mappedBy = "id")
+    private Set<StorageItem> item_storage;
+
+    //Foreign key from user
+    @ManyToOne
+    @JoinColumn(name = USER_ID, nullable = false)
     private User user;
 }

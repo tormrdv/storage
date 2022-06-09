@@ -1,6 +1,8 @@
 package ng.storageapp.backend.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -14,8 +16,8 @@ import java.util.Set;
 
 public class User {
     public static final String TABLE_NAME = "users";
-    public static final String BUSINESS_USER = "business_client_owner_id";
-    public static final String ID = "id";
+    private static final String ID = "id";
+    private static final String STORAGE_LIMIT = "storage_limit";
 
     @Id
     @SequenceGenerator(
@@ -28,30 +30,18 @@ public class User {
             generator = "user_sequence"
     )
     @Column(name = ID)
-    private long id;
+    private Long id;
     private String name;
     private String email;
+    private String role;
     //encrypt password
-    private String passwordHash;
-    private boolean isAdmin;
-
-    //self reference
-    @Nullable
-    @OneToMany(mappedBy = "id")
-    private Set<User> user;
-    @ManyToOne
-    @JoinColumn(name = BUSINESS_USER)
-    private User businessClientOwnerId;
+    private String password;
 
     @Nullable
-    @Column(name = "storage_limit")
-    private int storageLimit;
+    @Column(name = STORAGE_LIMIT)
+    private Integer storageLimit;
 
-    //role reference
-    @OneToMany(mappedBy = "id")
-    private Set<UserRole> users;
-
-    //storage reference
+    //export PK to storage
     @OneToMany(mappedBy = "id")
     private Set<Storage> storages;
 
@@ -60,8 +50,8 @@ public class User {
             String name,
             String email,
             String password,
-            boolean admin)
-    {
+            String role
+    ) {
     }
 }
 

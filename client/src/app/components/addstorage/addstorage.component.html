@@ -1,0 +1,53 @@
+<div class="col1">
+  <button mat-icon-button color="accent" [routerLink]="['/home']" routerLinkActive="router-link-active">
+    <mat-icon>backspace</mat-icon>
+  </button>
+</div>
+
+<form [formGroup]="addStorageForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>Storage Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-error *ngIf="addStorageForm.controls['name'].hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Code" formControlName="code">
+            <mat-error *ngIf="addStorageForm.controls['code'].hasError('required')">
+              Code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="!hasParent">
+        <div class="col">
+          <button mat-button type="button" (click)="hasParent = !hasParent">
+            + parent storage
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="hasParent">
+        <div class="col">
+          <mat-select placeholder="Storage" formControlName="storage">
+            <mat-option *ngFor="let storage of storages" [value]="storage.type">
+              {{ storage.name }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Add</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

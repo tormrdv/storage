@@ -1,13 +1,51 @@
-<h2>Items</h2>
+<mat-card class="prompt">
+           
+    <mat-card-content class="promptInput">
+        <mat-card-header>
+            <mat-card-title>Add </mat-card-title>
+        </mat-card-header>
+        <div class="row">
+            <div class="col">
+                <button mat-raised-button color="primary" [routerLink]="['/storage/add']" routerLinkActive="router-link-active" >Add a storage</button>
+            </div>
+            <div class="col">
+            <button mat-raised-button color="primary" [routerLink]="['/item/add']" routerLinkActive="router-link-active" >Add an item</button>
+            </div>
+        </div>
+    </mat-card-content>
+ 
+</mat-card>
 
-<div *ngFor="let item of items">
-    
-    <h3>
-        {{ item.name }}
-    </h3>
+<mat-card class="prompt">
 
-    <p>{{ item.weight }}</p>
-    <p>{{ item.colour }}</p>
-    <p>{{ item.value }}</p>
-    
+<div class = "row">
+
+    <h2> Item List</h2>
 </div>
+<div class="row">
+
+
+<table class = "table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th> Name</th>
+            <th> Weight </th>
+            <th> Colour</th>
+            <th> Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let item of items" >
+            <td> {{ item.name }} </td>
+            <td> {{ item.weight }} </td>
+            <td> {{ item.colour }} </td>
+            <td> {{ item.value}} </td>
+            <td>
+                <button mat-flat-button color = "warn" style="margin-left: 10px"> Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+</mat-card>

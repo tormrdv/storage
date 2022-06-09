@@ -1,0 +1,63 @@
+.homeLogin {
+    width: 40%;
+    display: flex;
+    margin: auto;
+    margin-top: 3%;
+    padding: 20px;
+    height: 45%;
+    align-items: center;
+}
+
+.frontPageTitle {
+    margin: 30px;
+    margin-left: 20%;
+}
+
+.loginInput {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    font-size: 15px;
+}
+
+.homeRegister {
+    width: 40%;
+    align-content: space-between;
+    flex-direction: row;
+    margin: auto;
+    margin-top: 1%;
+    padding: 20px;
+    height: 6%;
+    
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+  
+.col {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.col1 {
+    flex: 1;
+    margin-right: 20px;
+    padding: 8px;
+}
+
+.col:last-child {
+    margin-right: 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form-card {
+width: 40%;
+min-width: 120px;
+margin: 20px auto;
+}

@@ -11,18 +11,27 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(name = "storage_type")
-
+@Table(name = StorageType.TYPE_TABLE_NAME)
 public class StorageType {
+    public static final String TYPE_TABLE_NAME = "storage_type";
+    public static final String TYPENAME = "type_name";
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @SequenceGenerator(
+            name = "type_seq",
+            sequenceName = "type_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE
+    )
+    @Column(name = "id")
+    private Long id;
     private String type;
 
-    @Column(name = "type_name")
+    @Column(name = TYPENAME)
     private String typeName;
 
-    //storage reference
+    //export PK to storage
     @OneToMany(mappedBy = "id")
     private Set<Storage> storages;
 }

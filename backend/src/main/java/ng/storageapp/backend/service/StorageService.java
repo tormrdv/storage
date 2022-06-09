@@ -15,14 +15,14 @@ public class StorageService {
     @Autowired
     StorageRepository storageRepository;
 
-    public List<StorageTypeDTO> getAllStoragesTypes(){
+    public List<StorageTypeDTO> getAllStoragesTypes() {
         return storageRepository.findAll()
                 .stream()
                 .map(this::convertEntToDTO)
                 .collect(Collectors.toList());
     }
 
-    public StorageTypeDTO convertEntToDTO(Storage storage){
+    public StorageTypeDTO convertEntToDTO(Storage storage) {
         StorageTypeDTO storageTypeDTO = new StorageTypeDTO();
         storageTypeDTO.setStorageID(storage.getId());
         storageTypeDTO.setType(storage.getStorageType().getType());

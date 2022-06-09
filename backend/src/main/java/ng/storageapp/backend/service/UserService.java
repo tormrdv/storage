@@ -18,9 +18,13 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public List<User> getUsers() { return userRepository.findAll(); }
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
 
-    public void saveUser(User user) { userRepository.save(user); }
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 
     /*public UserItemDTO convertEntToDTO(User user){
         UserItemDTO userItemDTO = new UserItemDTO();

@@ -22,7 +22,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { AdditemComponent } from './components/item/additem/additem.component';
+import { AddstorageComponent } from './components/addstorage/addstorage.component';
+import { ItemService } from 'src/app/services/item.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     NavigationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdditemComponent,
+    AddstorageComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -50,7 +56,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 
 public class ItemStorageDTO {
-    private long itemID;
-    private long storageID;
-    private String name;
+    private Long storageItemId;
+    private Long itemID;
+    private Long storageID;
 }
