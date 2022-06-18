@@ -31,5 +31,5 @@ Then either:
  1) Spring boot application has an entry point Java class called _SpringbootBackendApplication_ with the _public static void main(String[] args)_ method, which you can run to start the application.
  2) Or you can start the spring boot application via the command line using this command:  `mvn spring-boot:run` .
 
-## ERD 
-![storage-app](https://user-images.githubusercontent.com/71014202/172955402-63cf98a8-cefc-4dc8-b5a8-80dc7494c05d.png)
+## ERD
+![storage-app-2022-06-18_20-25](https://user-images.githubusercontent.com/71014202/174450143-a70799a3-a360-4f68-ad67-399a1edfeed1.png)
