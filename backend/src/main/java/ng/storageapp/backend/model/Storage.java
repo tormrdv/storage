@@ -45,8 +45,8 @@ public class Storage {
     private Set<StorageNest> storage;
 
     //Foreign key from storageNest
-    @ManyToOne
-    @JoinColumn(name = STORAGE_NEST)
+    @OneToOne
+    @JoinColumn(name = STORAGE_NEST, referencedColumnName = "id")
     private StorageNest storage_nest;
 
     //reference to item in storage

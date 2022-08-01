@@ -16,15 +16,15 @@ export class ItemService {
         return this.http.get<Item[]>(`${this.baseURL}/all`)
     }
     
-    addItem(item: Item): Observable<Object> {
-        return this.http.post(`${this.baseURL}`, item)
+    addItem(item: Item): Observable<Item> {
+        return this.http.post<Item>(`${this.baseURL}`, item)
     }
     
     getItemById(id: number): Observable<Item> {
         return this.http.get<Item>(`${this.baseURL}/${id}`)
     }
 
-    deleteItem(id: number): Observable<Object> {
-        return this.http.delete(`${this.baseURL}/${id}`)
+    deleteItem(id: number): Observable<any> {
+        return this.http.delete(`${this.baseURL}/${id}`, {responseType: 'text'})
     }
 }

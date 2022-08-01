@@ -12,9 +12,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 class BackendApplicationTests {
 
+    //add tests
     @Autowired
     ItemController itemController;
 
+    //nullpointer
     @Test
     void contextLoads() {
         Assertions.assertThat(itemController).isNot(null);

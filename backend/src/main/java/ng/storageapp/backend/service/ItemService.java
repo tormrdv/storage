@@ -34,6 +34,10 @@ public class ItemService {
         throw new Exception();
     }
 
+    public void deleteItem(Long id) {
+        itemRepository.deleteById(id);
+    }
+
     public List<ItemStorageDTO> getAllItemStorage() {
         return itemRepository.findAll()
                 .stream()

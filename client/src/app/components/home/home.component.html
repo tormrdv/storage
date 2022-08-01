@@ -1,51 +1,74 @@
-<mat-card class="prompt">
+
+
+<div class="row1">
+    <mat-card class="topPrompt">
            
-    <mat-card-content class="promptInput">
-        <mat-card-header>
-            <mat-card-title>Add </mat-card-title>
-        </mat-card-header>
-        <div class="row">
-            <div class="col">
-                <button mat-raised-button color="primary" [routerLink]="['/storage/add']" routerLinkActive="router-link-active" >Add a storage</button>
+        <mat-card-content class="promptInput">
+            
+            <div class="row">
+                <div class="col">
+                    <button mat-raised-button color="primary" [routerLink]="['/storage/add']" routerLinkActive="router-link-active" >Add a storage</button>
+                </div>
+                <div class="col">
+                <button mat-raised-button color="primary" [routerLink]="['/item/add']" routerLinkActive="router-link-active" >Add an item</button>
+                </div>
             </div>
+        </mat-card-content>
+     
+    </mat-card>
+    <mat-card class="topPrompt">
+        <mat-card-content class="promptInput">
             <div class="col">
-            <button mat-raised-button color="primary" [routerLink]="['/item/add']" routerLinkActive="router-link-active" >Add an item</button>
-            </div>
-        </div>
-    </mat-card-content>
- 
-</mat-card>
-
-<mat-card class="prompt">
-
-<div class = "row">
-
-    <h2> Item List</h2>
-</div>
-<div class="row">
-
-
-<table class = "table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th> Name</th>
-            <th> Weight </th>
-            <th> Colour</th>
-            <th> Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor = "let item of items" >
-            <td> {{ item.name }} </td>
-            <td> {{ item.weight }} </td>
-            <td> {{ item.colour }} </td>
-            <td> {{ item.value}} </td>
-            <td>
-                <button mat-flat-button color = "warn" style="margin-left: 10px"> Delete</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                <mat-form-field class="full-width">
+                  <mat-select placeholder="Storage" [(value)]="selected">
+                    <mat-option *ngFor="let storage of storages" [value]="storage.name">
+                        {{ storage.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+        </mat-card-content>
+    </mat-card>
 </div>
 
+
+<mat-card class="mainTable">
+
+    <mat-card-header>
+        <mat-card-title >Current items in {{selected}}</mat-card-title>
+    </mat-card-header>
+    
+    <div class = "col">
+        <table mat-table [dataSource]="items" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let item"> {{item.name}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="weight">
+                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                        <td mat-cell *matCellDef="let item"> {{item.weight}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="colour">
+                        <th mat-header-cell *matHeaderCellDef> Colour </th>
+                        <td mat-cell *matCellDef="let item"> {{item.colour}} </td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="value">
+                        <th mat-header-cell *matHeaderCellDef> Value </th>
+                        <td mat-cell *matCellDef="let item"> {{item.value}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td *matCellDef="let item">
+                            <button (click)="deleteItem(item.id)" mat-flat-button color = "warn" style="margin-left: 10px"> Delete</button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>    
+    </div>
+    
 </mat-card>

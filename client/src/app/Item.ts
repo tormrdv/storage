@@ -6,7 +6,7 @@ export interface Item {
     value: number;
 }
 
-export const items = [
+/*export const items = [
     {
       id: 1,
       name: 'Phone XL',
@@ -28,5 +28,5 @@ export const items = [
       colour: 'blue',
       value: 299
     }
-  ];
+  ];*/
 

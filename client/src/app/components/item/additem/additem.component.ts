@@ -17,6 +17,7 @@ export class AdditemComponent implements OnInit{
     private router: Router,
     private fb: FormBuilder
   ) {}
+
   ngOnInit(): void {
   }
   
@@ -40,8 +41,12 @@ export class AdditemComponent implements OnInit{
   ];
 
   saveItem() {
+    this.item = this.addItemForm.value  
+    /*this.item.storage = this.addItemForm.get('storage').value*/
+
     this.itemService.addItem(this.item).subscribe( data=>{
       console.log(data)
+      alert('Item Added!')
       this.goHome()
     },
     error => console.log(error))
@@ -52,8 +57,8 @@ export class AdditemComponent implements OnInit{
   }
 
   onSubmit(): void {
-    alert('Item Added!')
-    console.log(this.item)
-    this.saveItem()
+    if (this.addItemForm.valid){
+      this.saveItem()
+    } 
   }
 }

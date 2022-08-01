@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -35,6 +34,6 @@ public class StorageNest {
     private Storage storage;
 
     //export StorageNest primary key to storage table
-    @OneToMany(mappedBy = "id")
-    private Set<Storage> storage_nest;
+    @OneToOne(mappedBy = "storage_nest")
+    private Storage storage_nest;
 }

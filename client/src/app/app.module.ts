@@ -26,6 +26,7 @@ import { AdditemComponent } from './components/item/additem/additem.component';
 import { AddstorageComponent } from './components/addstorage/addstorage.component';
 import { ItemService } from 'src/app/services/item.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]
